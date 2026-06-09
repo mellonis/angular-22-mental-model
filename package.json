@@ -12,7 +12,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "tick1:example": "ng serve --open",
-    "tick1:task": "ng serve --open"
+    "tick1:task": "ng serve --open",
+    "tick2:example": "ng serve --open",
+    "tick2:task": "ng serve --open"
   },
   "private": true,
   "packageManager": "npm@11.13.0",
