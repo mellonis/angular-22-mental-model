@@ -12,6 +12,8 @@ import { RouterOutlet, RouterLink } from '@angular/router';
         <a routerLink="/tick1/task">tick 1 · task</a>
         <a routerLink="/tick2/example">tick 2 · example</a>
         <a routerLink="/tick2/task">tick 2 · task</a>
+        <a routerLink="/tick3/example">tick 3 · example</a>
+        <a routerLink="/tick3/task">tick 3 · task</a>
       </nav>
     </header>
     <main>
