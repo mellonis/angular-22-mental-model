@@ -1,0 +1,21 @@
+{
+  "name": "angular-22-mental-model",
+  "version": "1.0.0",
+  "description": "Learn Angular 22 by doing — runnable TypeScript ticks covering standalone components, signals, DI, routing, forms, and SSR.",
+  "main": "index.js",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "angular",
+    "signals",
+    "standalone",
+    "typescript",
+    "tutorial",
+    "learning"
+  ],
+  "author": "Ruslan Gilmullin <mellonis@yandex.ru>",
+  "license": "MIT",
+  "type": "module"
+}
