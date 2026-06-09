@@ -12,5 +12,11 @@ Project scaffold. Ticks will land tick-by-tick, each as a `docs(tickN): … — 
 
 ```bash
 npm install
-npm run typecheck
+npm run tick1:example    # serve, then navigate to /tick1/example
+npm run tick1:task       # serve, then navigate to /tick1/task
+ng build                 # type-check + production build
 ```
+
+The two `tick1:*` scripts are currently identical (`ng serve --open`) because Angular 22's CLI doesn't expose a `--open-path` flag. The root `App` shell has nav links to both routes.
+
+Runtime: Angular 22 CLI workspace, zoneless change detection. See [`docs/superpowers/specs/2026-06-09-batch-1-design.md`](docs/superpowers/specs/2026-06-09-batch-1-design.md) for the batch 1 design.

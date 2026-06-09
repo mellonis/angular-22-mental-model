@@ -2,20 +2,37 @@
   "name": "angular-22-mental-model",
   "version": "1.0.0",
   "description": "Learn Angular 22 by doing — runnable TypeScript ticks covering standalone components, signals, DI, routing, forms, and SSR.",
-  "main": "index.js",
-  "scripts": {
-    "typecheck": "tsc --noEmit",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "angular",
-    "signals",
-    "standalone",
-    "typescript",
-    "tutorial",
-    "learning"
-  ],
+  "keywords": ["angular", "signals", "standalone", "typescript", "tutorial", "learning"],
   "author": "Ruslan Gilmullin <mellonis@yandex.ru>",
   "license": "MIT",
-  "type": "module"
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "tick1:example": "ng serve --open",
+    "tick1:task": "ng serve --open"
+  },
+  "private": true,
+  "packageManager": "npm@11.13.0",
+  "dependencies": {
+    "@angular/common": "^22.0.0",
+    "@angular/compiler": "^22.0.0",
+    "@angular/core": "^22.0.0",
+    "@angular/forms": "^22.0.0",
+    "@angular/platform-browser": "^22.0.0",
+    "@angular/router": "^22.0.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^22.0.0",
+    "@angular/cli": "^22.0.0",
+    "@angular/compiler-cli": "^22.0.0",
+    "jsdom": "^28.0.0",
+    "prettier": "^3.8.1",
+    "typescript": "~6.0.2",
+    "vitest": "^4.0.8"
+  }
 }
