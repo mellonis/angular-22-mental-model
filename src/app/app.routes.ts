@@ -37,4 +37,16 @@ export const routes: Routes = [
       import('./tick3/task').then(m => m.Tick3Task),
     title: 'Tick 3 · Task',
   },
+  {
+    path: 'tick4/example',
+    loadComponent: () =>
+      import('./tick4/example').then(m => m.Tick4Example),
+    title: 'Tick 4 · Example',
+  },
+  {
+    path: 'tick4/task',
+    loadComponent: () =>
+      import('./tick4/task').then(m => m.Tick4Task),
+    title: 'Tick 4 · Task',
+  },
 ];

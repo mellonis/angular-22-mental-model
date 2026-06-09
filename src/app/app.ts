@@ -8,12 +8,10 @@ import { RouterOutlet, RouterLink } from '@angular/router';
     <header>
       <h1>Angular 22 Mental Model</h1>
       <nav>
-        <a routerLink="/tick1/example">tick 1 · example</a>
-        <a routerLink="/tick1/task">tick 1 · task</a>
-        <a routerLink="/tick2/example">tick 2 · example</a>
-        <a routerLink="/tick2/task">tick 2 · task</a>
-        <a routerLink="/tick3/example">tick 3 · example</a>
-        <a routerLink="/tick3/task">tick 3 · task</a>
+        @for (n of tickNumbers; track n) {
+          <a [routerLink]="'/tick' + n + '/example'">tick {{ n }} · example</a>
+          <a [routerLink]="'/tick' + n + '/task'">tick {{ n }} · task</a>
+        }
       </nav>
     </header>
     <main>
@@ -26,4 +24,6 @@ import { RouterOutlet, RouterLink } from '@angular/router';
     main { padding: 1rem; }
   `],
 })
-export class App {}
+export class App {
+  readonly tickNumbers = [1, 2, 3, 4];
+}
