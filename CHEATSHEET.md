@@ -1,4 +1,4 @@
-# Cheatsheet — Ticks 1–2
+# Cheatsheet — Ticks 1–3
 
 One-page recap of the mental model. Each section is one tick.
 
@@ -21,3 +21,12 @@ One-page recap of the mental model. Each section is one tick.
 - In zoneless Angular 22, signal writes are the mechanism that tells the framework what to re-render. No `zone.js`, no `markForCheck()`.
 - Signals track value *replacement* (`.set`/`.update`), not deep mutation. `signal()[0].x = y` does NOT trigger updates — produce a new value (`update(s => ({ ...s, x: y }))`) instead. Tick 4 has a sidebar with the full story.
 - Event bindings (`(click)="…"`) flow template → component; the expression inside the quotes runs on the event. Tick 3 covers the full binding story.
+
+## Tick 3 — Template syntax (bindings and events)
+
+- `[prop]="expr"` writes the JavaScript property on the DOM element. `[attr.x]="expr"` writes the HTML attribute — use for ARIA, `data-*`, SVG, or anywhere the property and attribute differ.
+- `(event)="expr"` runs `expr` when the event fires; `$event` is the implicit event payload (cast via `($event.target as HTMLInputElement).value` for form events).
+- `[class.x]="cond"` toggles class `x`. `[style.prop]="…"` sets style `prop`. `[style.prop.unit]="n"` appends the unit (e.g. `[style.width.px]="50"` → `width: 50px`). `[style.--bg]="…"` also works for CSS custom properties.
+- `@let name = expr;` introduces a template-local variable scoped to the rest of the template region. Doesn't add a field to the class. `@let` is naming, not reactivity — the subscription lives in signal calls inside the RHS expression; `@let` itself re-evaluates on every template render.
+- All template expressions are full TypeScript expressions, strict-type-checked against the component class.
+- Legacy structural directives (`*ngIf`/`*ngFor`/`*ngSwitch`) are the pre-v17 way to do what `@if`/`@for`/`@switch` cover in tick 4.
