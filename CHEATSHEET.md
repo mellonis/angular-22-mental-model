@@ -1,4 +1,4 @@
-# Cheatsheet — Ticks 1–3
+# Cheatsheet — Ticks 1–4
 
 One-page recap of the mental model. Each section is one tick.
 
@@ -30,3 +30,11 @@ One-page recap of the mental model. Each section is one tick.
 - `@let name = expr;` introduces a template-local variable scoped to the rest of the template region. Doesn't add a field to the class. `@let` is naming, not reactivity — the subscription lives in signal calls inside the RHS expression; `@let` itself re-evaluates on every template render.
 - All template expressions are full TypeScript expressions, strict-type-checked against the component class.
 - Legacy structural directives (`*ngIf`/`*ngFor`/`*ngSwitch`) are the pre-v17 way to do what `@if`/`@for`/`@switch` cover in tick 4.
+
+## Tick 4 — Built-in control flow (`@if`, `@for`, `@switch`)
+
+- `@if (cond) { ... } @else if (cond) { ... } @else { ... }` — language-level conditional. `@if (expr; as alias) { ... }` binds the truthy result to `alias` (useful for narrowing nullable signals).
+- `@for (item of items; track item.id; let i = $index, first = $first, …) { ... } @empty { ... }` — language-level loop. Implicit context vars: `$index`, `$first`, `$last`, `$even`, `$odd`, `$count`. `@empty` fires when the iterable is empty.
+- `@switch (expr) { @case (x) { ... } @default { ... } }` — language-level switch on a value, strict equality (`===`).
+- `track` is mandatory in `@for`. It's a per-item expression returning a stable identifier; controls how Angular reuses DOM when the list changes. Pre-v17 `trackBy` was optional and a common perf footgun.
+- All three blocks are compiled directly into the template render function — no structural-directive indirection, smaller bundle.
