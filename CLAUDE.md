@@ -49,8 +49,8 @@ Global commit rules from `~/.claude/CLAUDE.md` still apply — notably, do not r
 ## Writing conventions
 
 - Every `tickN.md` includes a **"coming from React/Vue/Svelte" sidebar** — three short bullets naming the analogous primitive in those frameworks and where Angular's diverges.
-- Modern syntax is the default in every example. Legacy syntax appears only where the tick is explicitly about it (tick 9, decorator IO) or in sidebars (tick 1: NgModule history; tick 3: `*ngIf`/`*ngFor`/`*ngSwitch` reference; tick 12: OnPush + zone.js).
-- Templates use `@if`/`@for`/`@switch` throughout. `*ngIf`/`*ngFor`/`*ngSwitch` appear only in the tick 3 sidebar reference table.
+- Modern syntax is the default in every example. Legacy syntax appears only where the tick is explicitly about it (tick 9, decorator IO) or in sidebars (tick 1: NgModule history; tick 4: `*ngIf`/`*ngFor`/`*ngSwitch` reference; tick 12: OnPush + zone.js).
+- Templates use `@if`/`@for`/`@switch` throughout. `*ngIf`/`*ngFor`/`*ngSwitch` appear only in the tick 4 sidebar reference table.
 - Imports use the standalone style — no `NgModule.declarations` anywhere outside the tick 1 sidebar's code-fence example.
 
 ## Topics covered
