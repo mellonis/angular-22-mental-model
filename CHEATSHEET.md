@@ -1,4 +1,4 @@
-# Cheatsheet — Ticks 1–4
+# Cheatsheet — Ticks 1–5
 
 One-page recap of the mental model. Each section is one tick.
 
@@ -38,3 +38,12 @@ One-page recap of the mental model. Each section is one tick.
 - `@switch (expr) { @case (x) { ... } @default { ... } }` — language-level switch on a value, strict equality (`===`).
 - `track` is mandatory in `@for`. It's a per-item expression returning a stable identifier; controls how Angular reuses DOM when the list changes. Pre-v17 `trackBy` was optional and a common perf footgun.
 - All three blocks are compiled directly into the template render function — no structural-directive indirection, smaller bundle.
+
+## Tick 5 — `computed()`
+
+- `computed(() => expr)` creates a derived signal. Read with `()`. The function must be pure (no side effects, no signal writes — Angular blocks those).
+- **Lazy**: never runs until something reads it. A computed nobody reads is free.
+- **Memoized**: caches the value. Recomputes only on the next read *after* a dependency has changed.
+- **Dependencies are dynamic**: every signal/computed read inside the function becomes a dep. Branches that don't run aren't tracked.
+- **Equality-stable downstream**: if the recomputed value equals the cached one (`===` by default), subscribers are not re-notified. Propagation stops at unchanged values.
+- Chained computeds form a graph. The framework propagates dirtiness on writes; reads pull fresh values bottom-up.
