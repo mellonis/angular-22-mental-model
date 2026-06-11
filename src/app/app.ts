@@ -25,5 +25,5 @@ import { RouterOutlet, RouterLink } from '@angular/router';
   `],
 })
 export class App {
-  readonly tickNumbers = [1, 2, 3, 4];
+  readonly tickNumbers = [1, 2, 3, 4, 5];
 }
