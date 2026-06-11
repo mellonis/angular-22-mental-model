@@ -20,7 +20,9 @@
     "tick4:example": "ng serve --open",
     "tick4:task": "ng serve --open",
     "tick5:example": "ng serve --open",
-    "tick5:task": "ng serve --open"
+    "tick5:task": "ng serve --open",
+    "tick6:example": "ng serve --open",
+    "tick6:task": "ng serve --open"
   },
   "private": true,
   "packageManager": "npm@11.13.0",
