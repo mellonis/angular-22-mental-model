@@ -1,4 +1,4 @@
-# Cheatsheet — Ticks 1–6
+# Cheatsheet — Ticks 1–7
 
 One-page recap of the mental model. Each section is one tick.
 
@@ -56,3 +56,13 @@ One-page recap of the mental model. Each section is one tick.
 - Signal writes inside effects are blocked by default. Use `computed()` for derived values; effects are for outside-the-graph side effects (DOM, console, network, storage, timers).
 - Effects must be created in an injection context — constructor of a component/service, field initialiser, or via an explicit `Injector`.
 - Coming from React: `useEffect(() => …, [deps])` becomes `effect(() => …)` — no dep array, no rules-of-hooks.
+
+## Tick 7 — Lifecycle hooks
+
+- Lifecycle hooks are methods on the component class. Angular calls them at specific moments: `ngOnInit` (inputs settled), `ngAfterContentInit` (projected content ready), `ngAfterViewInit` (view DOM rendered), `ngOnDestroy` (about to be removed).
+- Implementation pattern: `implements OnInit, OnDestroy` + method `ngOnInit() { ... }`. The interfaces are TypeScript-only; Angular finds the methods by name.
+- `ngOnInit` runs *once*, after input bindings have been applied. Use for init that needs inputs but not the DOM.
+- `ngAfterViewInit` runs *once*, after the component's view template is rendered into the DOM. Use for DOM-dependent setup.
+- `ngOnDestroy` runs *once*, before the component is removed. Use for cleanup (intervals, subscriptions, event listeners).
+- `inject(DestroyRef).onDestroy(fn)` is the modern functional alternative to `ngOnDestroy` — works without `implements OnDestroy`. Use freely outside lifecycle classes (services, helpers).
+- `ngOnChanges(changes)` runs whenever decorator `@Input()`s change — tick 9 covers it with the full legacy IO story. Signal-based `input()` (tick 8) doesn't need it.
