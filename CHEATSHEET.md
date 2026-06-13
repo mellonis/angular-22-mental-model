@@ -1,4 +1,4 @@
-# Cheatsheet — Ticks 1–5
+# Cheatsheet — Ticks 1–6
 
 One-page recap of the mental model. Each section is one tick.
 
@@ -47,3 +47,12 @@ One-page recap of the mental model. Each section is one tick.
 - **Dependencies are dynamic**: every signal/computed read inside the function becomes a dep. Branches that don't run aren't tracked.
 - **Equality-stable downstream**: if the recomputed value equals the cached one (`===` by default), subscribers are not re-notified. Propagation stops at unchanged values.
 - Chained computeds form a graph. The framework propagates dirtiness on writes; reads pull fresh values bottom-up.
+
+## Tick 6 — `effect()`
+
+- `effect(fn)` runs `fn` whenever its tracked signal deps change. No dep array — auto-tracked. Eager (runs at the next microtask after a write, plus once on creation).
+- `effect((onCleanup) => { …; onCleanup(() => …); })` — cleanup runs before each next effect run AND on component destroy. Closures capture the *previous* run's values.
+- `untracked(() => signal())` reads a signal without subscribing. Use for context values you want to read but not react to.
+- Signal writes inside effects are blocked by default. Use `computed()` for derived values; effects are for outside-the-graph side effects (DOM, console, network, storage, timers).
+- Effects must be created in an injection context — constructor of a component/service, field initialiser, or via an explicit `Injector`.
+- Coming from React: `useEffect(() => …, [deps])` becomes `effect(() => …)` — no dep array, no rules-of-hooks.
